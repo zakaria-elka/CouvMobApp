@@ -1,6 +1,7 @@
 import React  from 'react';
 import {StyleSheet,View, Text,Image} from 'react-native';
 import { FormSearch } from './FormSearch';
+import { Menu } from './Menu/Menu';
 
 
 
@@ -11,7 +12,7 @@ export const Home = () =>{
 
     
     <View style={styles.container}>
-    
+      
     <View  style={styles.viewlogo} >
 
     <Image  style={styles.image} 
@@ -22,6 +23,7 @@ export const Home = () =>{
 
     </View>
     <FormSearch/>
+    <Menu/>
     
    </View>
    
@@ -59,7 +61,8 @@ const styles = StyleSheet.create({
     fontFamily:'serif'
     
      
-  }
+  },
+  
 
 
 });

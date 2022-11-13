@@ -29,6 +29,8 @@ import {Fragment,useEffect} from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import  { Home } from './Components/Home';
+import { Splash } from './Spalsh/splash';
+import { Menu } from './Components/Menu/Menu';
 
 /* $FlowFixMe[missing-local-annot] The type annotation(s) required by Flow's
  * LTI update could not be added via codemod */
@@ -41,11 +43,15 @@ export default function App() {
   return (
     <NavigationContainer>
     <Stack.Navigator>
-      <Stack.Screen name="HomeScreen" component={Home} 
+    <Stack.Screen name="SplashScreen" component={Splash} 
       options={{
        headerShown: false
           }} />
-
+    <Stack.Screen name="HomeScreen" component={Home} 
+      options={{
+       headerShown: false
+          }} />
+    
     </Stack.Navigator>
   </NavigationContainer>
     )

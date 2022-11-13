@@ -1,12 +1,26 @@
 import React , {useRef,useState} from 'react';
-import {StyleSheet,View, Button,Text,TouchableOpacity} from 'react-native';
+import {StyleSheet,View, Button,Text} from 'react-native';
 import RNPickerSelect from 'react-native-picker-select';
 import DatePicker from 'react-native-date-picker'
 
 
 export function FormSearch() {
 
-  const [date, setDate] = useState(new Date())
+  const [da_te, setDate] = useState(new Date())
+  const [formData,setFormData]=useState({
+    date:new Date(),
+    city:'',
+    dest:''
+  })
+
+  const handleFormData = () =>{
+
+    
+    console.log(formData)
+
+
+
+  }
     
   return (
 
@@ -14,7 +28,7 @@ export function FormSearch() {
   <Text style={{textAlign:'center',fontWeight: 'bold',fontSize: 18,}}>Select a City</Text>
   <View style={styles.container2}>
       <RNPickerSelect
-            onValueChange={(value) => console.log(value)}
+            onValueChange={value =>{setFormData({...formData, city:value})}}
             fixAndroidTouchableBug={true}
             placeholder={{
                     label: 'Select a city...',
@@ -69,7 +83,7 @@ export function FormSearch() {
   <Text style={{textAlign:'center',fontWeight: 'bold',fontSize: 18,}}>Select Destination</Text>
   <View style={styles.container2}>
       <RNPickerSelect
-            onValueChange={(value) => console.log(value)}
+            onValueChange={value =>{setFormData({...formData, dest:value})}}
             fixAndroidTouchableBug={true}
             placeholder={{
                     label: 'Select Destination...',
@@ -123,10 +137,16 @@ export function FormSearch() {
   </View>
   <Text style={{textAlign:'center',fontWeight: 'bold',fontSize: 18,}}>Select Date</Text>
   <View style={styles.container3}>
-  <DatePicker style={styles.date} date={date} onDateChange={setDate} mode="date" />
+  <DatePicker style={styles.date} date={da_te} onDateChange={(date) =>{setFormData({...formData,
+   date:date
+  })}} 
+  mode="date" />
+
   </View>
   <View   style={styles.button}>
   <Button
+  onPress={()=>handleFormData()}
+
   title='Search'
   color="#841584"
 
