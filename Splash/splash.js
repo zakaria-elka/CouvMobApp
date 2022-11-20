@@ -1,30 +1,32 @@
 import React ,{useEffect} from 'react';
 import {StyleSheet,View, Text,Image, ImageBackground} from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import EncryptedStorage from 'react-native-encrypted-storage';
 
 
 export const Splash = ({navigation}) =>{
 
     useEffect(() => {    
 
-
-      AsyncStorage.getItem('UserData').then(
-        value=>{
-          if(value != null){
-            setTimeout(()=>{navigation.navigate('HomeScreen')},1000)
-            }
-            else{
-              setTimeout(()=>{navigation.navigate('LoginScreen')},1000)
-            }
-          }
-        
-        
-        )
-        
-   
- 
+    getData()
+  
 
     });
+
+const getData =async()=>{
+
+  const session = await EncryptedStorage.getItem("UserData");
+  if (session !== null) {
+    console.log(session)
+    setTimeout(()=>{navigation.navigate('HomeScreen')},2000)
+
+}else{
+    setTimeout(()=>{navigation.navigate('LoginScreen')},2000)
+
+}
+  
+
+
+} 
 
 return(
 

@@ -1,10 +1,10 @@
-import React,{useState}  from 'react';
-import {StyleSheet,View, Text,Image} from 'react-native';
+import React,{useState,useEffect}  from 'react';
+import {StyleSheet,View, Text,Image,} from 'react-native';
 import { Logo } from '../logo';
 import { Menu } from '../Menu/Menu';
 import { Form, FormItem } from 'react-native-form-component';
 import { useNavigation } from '@react-navigation/native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import EncryptedStorage from 'react-native-encrypted-storage';
 
 
 export const Login = () =>{
@@ -17,6 +17,7 @@ export const Login = () =>{
 
 
  })
+
  
  const requestOptions = {
           method: 'POST',
@@ -24,24 +25,32 @@ export const Login = () =>{
           body: JSON.stringify(form)
       };
 
- const logSubmit= async()=>{
+ 
+ async function logSubmit(){
 
-  try{
-
-  await fetch('http://10.0.2.2:4500/api/auth/user/login', requestOptions)
-  .then(res=>res.json())
-  .then(data=>console.log(data))
-  .then(data=>AsyncStorage.setItem('UserData',data));
   
-
- }catch(err){
-  alert(err)
+    const res =await fetch('http://10.0.2.2:4500/api/auth/user/login', requestOptions)
+    if(res.status==200){
+      console.log(res.status)
+      const data=await res.json();
+      SaveData(data)
+    }else{
+      console.log(res.status)
+    }
+ 
+  
+     
+     
+ }
+ 
+ const SaveData = async(data)=>{
+  
+  await EncryptedStorage.setItem(
+    "UserData",
+    JSON.stringify(data)
+  )
 
  }
-
- }
-
-
 
 return(
 
@@ -50,7 +59,7 @@ return(
 <Logo/>
 
 <View style={styles.formView}>
-<Form onButtonPress={() => logSubmit()}>
+<Form onButtonPress={() =>logSubmit()}>
     <FormItem  placeholder='Entrer Email'
          label="Email"
          isRequired
