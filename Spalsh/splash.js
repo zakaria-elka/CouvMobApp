@@ -1,13 +1,27 @@
 import React ,{useEffect} from 'react';
 import {StyleSheet,View, Text,Image, ImageBackground} from 'react-native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 export const Splash = ({navigation}) =>{
 
     useEffect(() => {    
 
-     setTimeout(()=>{navigation.navigate('HomeScreen')},2000)
+
+      AsyncStorage.getItem('UserData').then(
+        value=>{
+          if(value != null){
+            setTimeout(()=>{navigation.navigate('HomeScreen')},1000)
+            }
+            else{
+              setTimeout(()=>{navigation.navigate('LoginScreen')},1000)
+            }
+          }
+        
+        
+        )
+        
+   
  
 
     });

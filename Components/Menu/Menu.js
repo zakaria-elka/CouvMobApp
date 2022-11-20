@@ -1,13 +1,13 @@
 import React, { Fragment, useState }  from 'react';
 import {StyleSheet,View, Text,Image , TouchableOpacity} from 'react-native';
-
+import { useNavigation } from '@react-navigation/native';
 
 
 
 export const Menu = () =>{
 
     const [opClose,setOpClose] = useState(0)
-
+    const navigation = useNavigation();
 
 
     return(
@@ -34,24 +34,36 @@ export const Menu = () =>{
 </View>
 
 
-   <TouchableOpacity onPress={()=>console.log('toz')} style={styles.list} >
+   <TouchableOpacity onPress={()=>navigation.navigate("HomeScreen")} style={styles.list} >
+    <Image  style={{width:25,height:25}} 
+      source={require('../../img/home.png')}
+    />
+    <Text style={{paddingLeft:10,paddingTop:5,fontWeight:'bold'}}>Home</Text>
+    </TouchableOpacity>
+    <TouchableOpacity onPress={()=>console.log('toz')} style={styles.list} >
     <Image  style={{width:25,height:25}} 
       source={require('../../img/offer.png')}
     />
-    <Text style={{paddingLeft:10,paddingTop:5}}>My offer</Text>
+    <Text style={{paddingLeft:10,paddingTop:5,fontWeight:'bold'}}>My offer</Text>
+    </TouchableOpacity>
+    <TouchableOpacity onPress={()=>console.log('toz')} style={styles.list} >
+    <Image  style={{width:25,height:25}} 
+      source={require('../../img/pencil-alt.png')}
+    />
+    <Text style={{paddingLeft:10,paddingTop:5,fontWeight:'bold'}}>Add offer</Text>
     </TouchableOpacity>
     <TouchableOpacity style={styles.list} >
     <Image  style={{width:25,height:25}} 
       source={require('../../img/cog.png')}
     />
-    <Text style={{paddingLeft:10,paddingTop:5}}>Settings</Text>
+    <Text style={{paddingLeft:10,paddingTop:5,fontWeight:'bold'}}>Settings</Text>
     </TouchableOpacity>
 
 
 
 
 
- 
+    <Text style={{paddingLeft:'25%',paddingTop:'150%',fontSize:10,fontWeight:'bold'}}>Dini Me3ak Copyright*</Text>
         </View> 
         
         : 
@@ -76,8 +88,7 @@ export const Menu = () =>{
       flex: 1,
       color:'black',
       backgroundColor:'#f8f9f9',
-
-   
+      
   
     },
     image2:{
@@ -102,6 +113,9 @@ export const Menu = () =>{
         width: 50,
         marginBottom:10,
         borderRadius: 400/ 2,
+        borderWidth: 1,
+        borderColor:'black',
+        
    
    
      },
@@ -124,8 +138,10 @@ export const Menu = () =>{
       padding:5,
       display:'flex',
       flexDirection:'row',
-      borderWidth: 1,
-      borderBottomColor:'black',
+      borderTopWidth:1,
+      borderTopColor:'black',
+      marginBottom:5,
+     
       
 
     },

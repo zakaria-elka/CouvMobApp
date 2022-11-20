@@ -31,6 +31,9 @@ import { createStackNavigator } from '@react-navigation/stack';
 import  { Home } from './Components/Home';
 import { Splash } from './Spalsh/splash';
 import { Menu } from './Components/Menu/Menu';
+import { Login } from './Components/auth/login';
+import { Register } from './Components/auth/register';
+import { Verif } from './Components/auth/verifcation';
 
 /* $FlowFixMe[missing-local-annot] The type annotation(s) required by Flow's
  * LTI update could not be added via codemod */
@@ -48,6 +51,18 @@ export default function App() {
        headerShown: false
           }} />
     <Stack.Screen name="HomeScreen" component={Home} 
+      options={{
+       headerShown: false
+          }} />
+    <Stack.Screen name="LoginScreen" component={Login} 
+      options={{
+       headerShown: false
+          }} />
+    <Stack.Screen name="RegisterScreen" component={Register} 
+      options={{
+       headerShown: false
+          }} />
+    <Stack.Screen name="VerifScreen" component={Verif} 
       options={{
        headerShown: false
           }} />
