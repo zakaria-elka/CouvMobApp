@@ -21,7 +21,8 @@ export const ShowOff =(props) => {
         price:"90dhs",
         place:"4",
         chauf:"yassine",
-
+        desc:"pause cafe de 15min",
+        score:"4.5"
 
 
       },
@@ -34,7 +35,8 @@ export const ShowOff =(props) => {
         price:"100dhs",
         place:"3",
         chauf:"Ahmed",
-
+        desc:"pause cafe de 15min",
+        score:"3.5"
 
 
       },
@@ -47,7 +49,8 @@ export const ShowOff =(props) => {
         price:"120dhs",
         place:"3",
         chauf:"Aziz",
-
+        desc:"pause cafe de 15min",
+        score:"4.2"
 
 
       }

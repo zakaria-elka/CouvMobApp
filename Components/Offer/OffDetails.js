@@ -19,46 +19,67 @@ export const OffDetails=({route})=> {
 
 return(
     <View style={styles.container}>
-    <Menu />
+    <Menu/>
     <View style={styles.main_container}  >
    
     <View style={styles.content_container} >
 
       <View >
-        <Text style={{fontSize:25}}>{offre.depart}</Text>
+        <Text style={{fontSize:25,fontWeight:"bold",fontStyle:"italic"}}>Depart: {offre.depart}</Text>
         <Text style={{fontSize:15}}>{offre.Dtime}</Text>
       </View>
-      <Image  style={styles.image} 
-source={require('../../img/path2.png')}
-/>
 <View >
-        <Text style={{fontSize:25}}>{offre.des}</Text>
+        <Text style={{fontSize:25,fontWeight:"bold",fontStyle:"italic"}}>Arrival: {offre.des}</Text>
         <Text style={{fontSize:15}}>{offre.Atime}</Text>
       </View>
-    
+     
     </View>
     <View style={styles.content_container}>
+        <Text style={{fontSize:17,fontWeight:"bold",fontStyle:"italic"}}>Depart Adress: Souk Lhad</Text>
+
+      </View>
+    <View style={styles.content_container}>
+        <Text style={{fontSize:17,fontWeight:"bold",fontStyle:"italic"}}>Travel duration: 1h45min</Text>
+
+      </View>
+      
+    
+    <View style={styles.content_container2}>
     <Image  style={styles.userpic} 
       source={require('../../img/user.png')}
     />
-        <Text style={{fontSize:25}}>{offre.chauf}</Text>
-      </View>
-    
-      <View style={styles.content_container}>
-        <Text style={{fontSize:25,color:"brown"}}>{offre.price}</Text>
-      </View>
-      <View style={styles.content_container}>
-    <Image  style={styles.userpic} 
-      source={require('../../img/user.png')}
+        <Text style={{fontSize:25,fontWeight:"bold",fontStyle:"italic"}}>{offre.chauf}</Text>
+        <Image  style={{width:30,height:30,marginLeft:"35%"}} 
+      source={require('../../img/etoile.png')}
     />
-        <Text style={{fontSize:25}}>{offre.chauf}</Text>
+    <Text style={{fontSize:25,fontStyle:"italic"}}>{offre.score}</Text>
+      </View>
+      <View style={styles.content_container}>
+        <Text style={{fontSize:18,fontWeight:"bold",fontStyle:"italic"}}>DriverDescription: dahuki bzf
+        </Text>
+
+      </View>
+
+      <View style={styles.content_container}>
+        <Text style={{fontSize:17,fontWeight:"bold",fontStyle:"italic"}}>Car: Toyota Yaris</Text>
+
+      </View>
+     
+    
+      <View style={styles.content_container}>
+        <Text style={{fontSize:17,color:"brown"}}>Price: {offre.price}</Text>
+
+      </View>
+      <View style={styles.content_container}>
+      <Text style={{fontSize:15,fontWeight:"bold",fontStyle:"italic"}}>available place: {offre.place}</Text>
+
       </View>
     
-    <Text style={{color:"black",fontSize:20,marginTop:"50%",}}>Description</Text>
+    <Text style={{color:"black",fontSize:20,marginTop:5}}>Description</Text>
     <View style={styles.textAreaContainer} >
     <TextInput
       style={styles.textArea}
-      value={offre.price}
+      value={offre.desc}
       editable={false} 
       selectTextOnFocus={false}
     />
@@ -97,37 +118,40 @@ const styles = StyleSheet.create({
   
     },
     main_container: {
-      height: "97%",
+      height: "90%",
       backgroundColor:'#f7f9f9',
-      margin:10,
+      margin:20,
       borderRadius: 10,
       shadowColor: 'black',  
       elevation: 8,  
       flexDirection:"column",
+      marginTop:50,
+      zIndex:-1
       
       
     },
     
     content_container: {
+      flexDirection:"column",
+      margin:5,
+      marginLeft:15,
+      marginTop:18
+      
+    },
+
+    content_container2: {
       flexDirection:"row",
       margin:5,
       marginLeft:15,
-      marginTop:15
+      marginTop:18
       
     },
   
   
-    image:{
-      marginRight:15,
-      marginLeft:15,
-      height: 55,
-      width: 55,
-  
-   },
    textAreaContainer: {
     borderColor:"black",
     borderWidth: 1,
-    height: 150,
+    height: 130,
     
   },
   textArea: {
@@ -143,7 +167,6 @@ const styles = StyleSheet.create({
      
     height: 30,
     width: 30,
-    marginBottom:10,
     borderRadius: 400/ 2,
     marginRight:20,
     borderWidth: 1,
