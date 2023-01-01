@@ -1,13 +1,18 @@
-import React, { Fragment, useState }  from 'react';
+import React, { Fragment, useState,useEffect}  from 'react';
 import {StyleSheet,View, Text,Image , TouchableOpacity} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-
+import EncryptedStorage from 'react-native-encrypted-storage';
 
 
 export const Menu = () =>{
 
     const [opClose,setOpClose] = useState(0)
     const navigation = useNavigation();
+    // const session = EncryptedStorage.getItem("UserData");
+   
+    
+  
+    
 
 
     return(
@@ -30,7 +35,7 @@ export const Menu = () =>{
      <Image  style={styles.userpic} 
       source={require('../../img/user.png')}
     />
-      <Text style={{fontSize:20,marginBottom:50}}>Username</Text>
+      <Text style={{fontSize:20,marginBottom:50,color:'black'}}></Text>
 </View>
 
 

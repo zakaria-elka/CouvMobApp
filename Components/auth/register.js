@@ -1,7 +1,7 @@
 import React,{useState}  from 'react';
 import {StyleSheet,View, Text,Image} from 'react-native';
 
-import { Menu } from '../Menu/Menu';
+
 import { Form, FormItem } from 'react-native-form-component';
 import { useNavigation } from '@react-navigation/native';
 
@@ -11,15 +11,36 @@ export const Register = () =>{
  const navigation = useNavigation();   
  const [regform,setRegform] = useState({
   
-    Fname:'',
-    Lname:'',
+    Fisrtname:'',
+    Lastname:'',
     phone:'',
-    CNi:'',
+    cni:'',
     email:'',
     password:''
 
 
  })
+
+ 
+
+ const requestOptions = {
+             method: 'POST',
+             headers: { 'Content-Type': 'application/json' },
+             body: JSON.stringify(regform)
+         };
+
+async function RegisterData(){
+
+     const res =await fetch('http://10.0.2.2:4500/api/auth/user/signup', requestOptions)
+     if(res.status==200){
+       console.log(res.status)
+     }else{
+       console.log(res.status)
+     }
+
+}
+
+
 
 return(
 
@@ -34,14 +55,14 @@ return(
          isRequired
          asterik
          value={regform.Fname}
-         onChangeText={(value) =>{setRegform({...regform, Fname:value})}}
+         onChangeText={(value) =>{setRegform({...regform, Fisrtname:value})}}
     />
    <FormItem  placeholder='Entrer Last Name'
          label="Last Name"
          isRequired
          asterik
          value={regform.Lname}
-         onChangeText={(value) =>{setRegform({...regform, Lname:value})}}
+         onChangeText={(value) =>{setRegform({...regform, Lastname:value})}}
     />
    
     <FormItem  placeholder='Entrer Phone Number'
@@ -55,8 +76,8 @@ return(
          label="CNI Number"
          isRequired
          asterik
-         value={regform.Lname}
-         onChangeText={(value) =>{setRegform({...regform, Lname:value})}}
+         value={regform.cni}
+         onChangeText={(value) =>{setRegform({...regform, cni:value})}}
     />
     <FormItem  placeholder='Entrer Email'
          label="Email"
@@ -76,7 +97,7 @@ return(
   </Form>
 
 </View>
-<Menu/>
+
 </View>
 
 )
@@ -95,7 +116,7 @@ const styles = StyleSheet.create({
 
         width:'90%',
         margin:'5%',
-        marginTop:'15%',
+        marginTop:'10%',
         height:'100%'
         
 

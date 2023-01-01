@@ -29,11 +29,13 @@ import {Fragment,useEffect} from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import  { Home } from './Components/Home';
-import { Splash } from './Spalsh/splash';
+import { Splash } from './Splash/splash';
 import { Menu } from './Components/Menu/Menu';
 import { Login } from './Components/auth/login';
 import { Register } from './Components/auth/register';
 import { Verif } from './Components/auth/verifcation';
+import { ShowOff } from './Components/Offer/ShowOff';
+import { OffDetails } from './Components/Offer/OffDetails';
 
 /* $FlowFixMe[missing-local-annot] The type annotation(s) required by Flow's
  * LTI update could not be added via codemod */
@@ -66,6 +68,14 @@ export default function App() {
       options={{
        headerShown: false
           }} />
+    <Stack.Screen name="ShowOffScreen" component={ShowOff} 
+      options={{
+       headerShown: false
+          }} />
+    <Stack.Screen name="OffDetailsScreen" component={OffDetails} 
+      options={{
+       headerShown: false
+          }} />     
     
     </Stack.Navigator>
   </NavigationContainer>

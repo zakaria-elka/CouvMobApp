@@ -20,7 +20,7 @@ const getData =async()=>{
     setTimeout(()=>{navigation.navigate('HomeScreen')},2000)
 
 }else{
-    setTimeout(()=>{navigation.navigate('LoginScreen')},2000)
+    setTimeout(()=>{navigation.navigate('HomeScreen')},2000)
 
 }
   

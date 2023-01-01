@@ -1,7 +1,6 @@
 import React,{useState,useEffect}  from 'react';
-import {StyleSheet,View, Text,Image,} from 'react-native';
+import {StyleSheet,View, Text,Image,Alert} from 'react-native';
 import { Logo } from '../logo';
-import { Menu } from '../Menu/Menu';
 import { Form, FormItem } from 'react-native-form-component';
 import { useNavigation } from '@react-navigation/native';
 import EncryptedStorage from 'react-native-encrypted-storage';
@@ -17,6 +16,30 @@ export const Login = () =>{
 
 
  })
+ 
+ useEffect(() => {    
+
+  getData()
+
+
+  });
+
+const getData =async()=>{
+
+const session = await EncryptedStorage.getItem("UserData");
+if (session !== null) {
+  console.log(session)
+  setTimeout(()=>{navigation.navigate('HomeScreen')},2000)
+
+}else{
+  setTimeout(()=>{navigation.navigate('LoginScreen')},2000)
+
+}
+
+
+
+} 
+
 
  
  const requestOptions = {
@@ -49,6 +72,24 @@ export const Login = () =>{
     "UserData",
     JSON.stringify(data)
   )
+  if(data.verificationStep=="0"){
+    Alert.alert(
+      "Activation",
+      "Want To Activate You Account?",
+      [
+        {
+          text: "Yes",
+          onPress: ()=>navigation.navigate("VerifScreen"),
+          style: "cancel"
+        },
+        { text: "Not Now", onPress: ()=>navigation.navigate("HomeScreen") }
+      ]
+    );
+    
+
+  }
+ 
+  
 
  }
 
@@ -80,7 +121,7 @@ return(
 <Text onPress={()=>navigation.navigate("RegisterScreen")} style={{color:'blue'}}>Register Here</Text>
 </Text>
 </View>
-<Menu/>
+
 </View>
 
 )

@@ -1,11 +1,13 @@
 import React , {useRef,useState} from 'react';
 import {StyleSheet,View, Button,Text} from 'react-native';
 import RNPickerSelect from 'react-native-picker-select';
-import DatePicker from 'react-native-date-picker'
+import DatePicker from 'react-native-date-picker';
+import { useNavigation } from '@react-navigation/native';
 
 
 export function FormSearch() {
 
+  const navigation = useNavigation();
   const [da_te, setDate] = useState(new Date())
   const [formData,setFormData]=useState({
     date:new Date(),
@@ -16,8 +18,8 @@ export function FormSearch() {
   const handleFormData = () =>{
 
     
-    console.log(formData)
-
+    console.log(formData);
+    navigation.navigate('ShowOffScreen');
 
 
   }
